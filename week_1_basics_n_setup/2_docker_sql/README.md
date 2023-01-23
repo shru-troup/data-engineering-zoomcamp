@@ -140,7 +140,7 @@ docker run -it \
   -e POSTGRES_USER="root" \
   -e POSTGRES_PASSWORD="root" \
   -e POSTGRES_DB="ny_taxi" \
-  -v c:/Users/alexe/git/data-engineering-zoomcamp/week_1_basics_n_setup/2_docker_sql/ny_taxi_postgres_data:/var/lib/postgresql/data \
+  -v ~/workspace/data-engineering-zoomcamp/week_1_basics_n_setup/2_docker_sql/ny_taxi_postgres_data:/var/lib/postgresql/data \
   -p 5432:5432 \
   --network=pg-network \
   --name pg-database \
@@ -255,5 +255,17 @@ services:
 
 
 ### SQL 
+# inserting the taxi zone data
 
-Coming soon!
+```bash
+URL = "<https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv>"
+
+python ingest_taxi_zone_lookup_data.py \
+  --user=root \
+  --password=root \
+  --host=localhost \
+  --port=5432 \
+  --db=ny_taxi \
+  --table_name=yellow_taxi_trips \
+  --url=${URL}
+```
