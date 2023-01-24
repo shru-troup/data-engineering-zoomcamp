@@ -269,3 +269,36 @@ python ingest_taxi_zone_lookup_data.py \
   --table_name=yellow_taxi_trips \
   --url=${URL}
 ```
+
+## Homework - 1
+### Restart docker container -- postgres and pgadmin and load a new table
+```bash
+docker container ls -a
+docker container start <container id>
+docker ps
+URL=https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-01.csv.gz
+python ingest_data.py \
+  --user=root \
+  --password=root \
+  --host=localhost \
+  --port=5432 \
+  --db=ny_taxi \
+  --table_name=green_taxi_trips \
+  --url=${URL}
+```
+
+
+Running locally
+
+```bash
+URL="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
+
+python ingest_data.py \
+  --user=root \
+  --password=root \
+  --host=localhost \
+  --port=5432 \
+  --db=ny_taxi \
+  --table_name=yellow_taxi_trips \
+  --url=${URL}
+```
