@@ -1,14 +1,17 @@
 ###
 ### A complete description of a Prefect Deployment for flow 'etl-parent-flow'
 ###
-name: Parametrized ETL flow
+name: etl2
 description: null
 version: f249519ffe3577352019dc720da58738
 # The work queue that will handle this deployment's runs
 work_queue_name: default
 tags: []
-parameters: {"color": "yellow", "months" :[4, 5], "year": 2021}
-schedule: null
+parameters: {}
+schedule:
+  cron: 0 5 1 * *
+  timezone: null
+  day_or: true
 infra_overrides: {}
 infrastructure:
   type: process
